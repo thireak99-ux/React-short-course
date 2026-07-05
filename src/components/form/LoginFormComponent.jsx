@@ -16,7 +16,6 @@ export default function LoginFormComponent() {
     }
   });
 
-  // Updated submission logic to hit your endpoint
   const onSubmit = async (data) => {
     setIsLoading(true);
     setApiError("");
@@ -37,14 +36,11 @@ export default function LoginFormComponent() {
       const result = await response.json();
 
       if (!response.ok) {
-        // Fallback message if the api response structure varies
         throw new Error(result?.error?.description || "Invalid email or password.");
       }
 
-      // Handle successful authentication here
       console.log("Login Success:", result);
-      
-      // Example: Save token to browser local storage
+
       if (result.token) {
         localStorage.setItem("authToken", result.token);
       }
@@ -65,8 +61,7 @@ export default function LoginFormComponent() {
         </p>
         
         <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
-          
-          {/* Display API response error messaging */}
+      
           {apiError && (
             <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-600 rounded text-sm">
               {apiError}
