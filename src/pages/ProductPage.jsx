@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react'
 import ProductComponent from '../components/ProductComponent';
+import NavbarComponent from "../components/NavbarComponent";
 import { Link } from 'react-router';
 
 export default function ProductPage() {
@@ -17,7 +18,11 @@ export default function ProductPage() {
     },[])
     
     return (
+
+      <>
+      <NavbarComponent/>
       <section className="grid grid-cols-4 gap5">
+        
         {
           product.map((product)=>(
             <Link to={`${product?.slug}`} key={product?.slug}>
@@ -30,5 +35,6 @@ export default function ProductPage() {
           ) )
         }
       </section>
+      </>
     );
 }
